@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
-
+#include <iostream>
+#include <fstream>
 #include <getopt.h>             /* getopt_long() */
 
 #include <fcntl.h>              /* low-level i/o */
@@ -616,7 +617,10 @@ int main(int argc, char **argv)
                         break;
 
                 case 'o':
-                        out_buf++;
+                        std::ofstream videofile;
+						  videofile.open ("example.txt");
+						  videofile << out_buf++;
+						  videofile.close();                                                
                         break;
 
                 case 'f':
