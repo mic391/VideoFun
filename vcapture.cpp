@@ -617,10 +617,11 @@ int main(int argc, char **argv)
                         break;
 
                 case 'o':
-                        std::ofstream videofile;
+						{ std::ofstream videofile;
 						  videofile.open ("example.txt");
 						  videofile << out_buf++;
-						  videofile.close();                                                
+						  videofile.close();  
+						}                                              
                         break;
 
                 case 'f':
