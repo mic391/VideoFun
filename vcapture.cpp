@@ -2,8 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+
+
 #include <iostream>
 #include <fstream>
+
 #include <getopt.h>             /* getopt_long() */
 
 #include <fcntl.h>              /* low-level i/o */
@@ -59,7 +62,12 @@ static int xioctl(int fh, int request, void *arg)
 static void process_image(const void *p, int size)
 {
         if (out_buf)
-                fwrite(p, size, 1, stdout);
+			{	FILE * pFile;
+				pFile = fopen ("videofile.avi", "w");
+				fwrite(p, size, 1, pFile);
+				fclose (pFile);
+			}
+                
 
         fflush(stderr);
         fprintf(stderr, ".");
@@ -617,11 +625,11 @@ int main(int argc, char **argv)
                         break;
 
                 case 'o':
-						{ std::ofstream videofile;
-						  videofile.open ("example.txt");
-						  videofile << out_buf++;
-						  videofile.close();  
-						}                                              
+						//{ std::ofstream videofile;
+						//  videofile.open ("example.txt");
+						  /*videofile << */out_buf++;
+						//  videofile.close();  
+					//	}                                              
                         break;
 
                 case 'f':
